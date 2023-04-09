@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import EmailItem from './EmailItem';
+import axios from 'axios';
 
 const Inbox = () => {
   const [selectAll, setSelectAll] = useState(false);
@@ -8,15 +9,8 @@ const Inbox = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      try {
-        const response = await fetch('https://saravana-kumaran-gmail-backend.vercel.app/api/emails',{
-          method:"GET"
-        });
-        const data = await response.json();
-        setEmails(data);
-      } catch (error) {
-        console.error('Error fetching emails:', error);
-      }
+      const response = await axios.get('https://saravana-kumaran-gmail-backend-j5s45brtm.vercel.app/api/emails');
+      setEmails(response.data);
     };
 
     fetchData();
@@ -35,6 +29,8 @@ const Inbox = () => {
     setEmails(emails.filter((email) => !email.selected));
     setSelectAll(false);
   };
+
+
 
   return (
     <div className="max-w-6xl mx-auto mt-10">
