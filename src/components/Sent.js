@@ -6,7 +6,7 @@ const Sent = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get('https://gmail-backend.vercel.app/api/emails/sent');
+      const response = await axios.get('https://saravana-kumaran-gmail-backend.vercel.app/api/emails/sent');
       setEmails(response.data);
     };
 

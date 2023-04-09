@@ -7,7 +7,7 @@ const Starred = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get('https://gmail-backend.vercel.app/api/emails');
+      const response = await axios.get('https://saravana-kumaran-gmail-backend.vercel.app/api/emails');
       setEmails(response.data);
     };
 
