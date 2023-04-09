@@ -9,7 +9,7 @@ const Inbox = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get('http://localhost:9000/api/emails');
+      const response = await axios.get('https://gmail-backend.vercel.app/api/emails');
       setEmails(response.data);
     };
 

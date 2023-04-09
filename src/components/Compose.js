@@ -21,10 +21,10 @@ const ComposeMail = () => {
   
     try {
       // First, send the email using nodemailer
-      await axios.post('http://localhost:9000/api/send-email', formData);
+      await axios.post('https://gmail-backend.vercel.app/api/send-email', formData);
   
       // Then, save the email to the database
-      await axios.post('http://localhost:9000/api/save-email', formData);
+      await axios.post('https://gmail-backend.vercel.app/api/save-email', formData);
   
       // Display a success message to the user
       alert('Mail sent successfully and saved to the database');

@@ -4,7 +4,6 @@ import './App.css';
 
 // Importing the components
 
-import Login from './components/Login';
 import Inbox from './components/Inbox';
 import Compose from './components/Compose';
 import Sent from './components/Sent';
@@ -26,8 +25,8 @@ function App() {
           <Sidebar />
           <div className="routes-wrapper">
             <Routes>
+              <Route path="/" element={<Compose />} />
               <Route path="/compose" element={<Compose />} />
-              <Route path="/login" element={<Login />} />
               <Route path="/inbox" element={<Inbox />} />
               <Route path="/starred" element={<Starred />} />
               <Route path="/sent" element={<Sent />} />
