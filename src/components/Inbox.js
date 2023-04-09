@@ -30,6 +30,8 @@ const Inbox = () => {
     setSelectAll(false);
   };
 
+
+
   return (
     <div className="max-w-6xl mx-auto mt-10">
       <h1 className="text-2xl font-medium mb-6">Inbox</h1>
@@ -58,7 +60,6 @@ const Inbox = () => {
               key={email._id}
               email={email}
               onSelect={(id) => setEmails(emails.map((e) => (e._id === id ? { ...e, selected: !e.selected } : e)))}
-              onStar={(id) => setEmails(emails.map((e) => (e._id === id ? { ...e, starred: !e.starred } : e)))}
               onDelete={(id) => setEmails(emails.filter((e) => e._id !== id))}
             />
           ))}

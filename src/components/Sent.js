@@ -1,29 +1,17 @@
-import { useState } from 'react';
+import axios from 'axios';
+import { useState, useEffect } from 'react';
 
 const Sent = () => {
-  const [emails, setEmails] = useState([
-    {
-      id: 1,
-      recipient: 'example1@gmail.com',
-      subject: 'Meeting Notes',
-      date: '2022-04-05',
-      preview: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...'
-    },
-    {
-      id: 2,
-      recipient: 'example2@gmail.com',
-      subject: 'Sales Report',
-      date: '2022-04-03',
-      preview: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...'
-    },
-    {
-      id: 3,
-      recipient: 'example3@gmail.com',
-      subject: 'Project Update',
-      date: '2022-03-28',
-      preview: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...'
-    },
-  ]);
+  const [emails, setEmails] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await axios.get('http://localhost:9000/api/emails/sent');
+      setEmails(response.data);
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <div className="flex flex-col h-screen overflow-y-hidden">
@@ -36,19 +24,19 @@ const Sent = () => {
             <div className="flow-root">
               <ul className="-my-5 divide-y divide-gray-200">
                 {emails.map((email) => (
-                  <li key={email.id} className="py-4">
+                  <li key={email._id} className="py-4">
                     <div className="flex items-center space-x-4">
                       <div className="flex-1 min-w-0">
-                        <p className="text-sm font-medium text-gray-900 truncate">{email.recipient}</p>
-                        <p className="text-sm text-gray-500 truncate">{email.subject}</p>
+                      <p className="text-sm font-medium text-gray-900 truncate p-3">Sender: {email.sender}</p>
+                        <p className="text-sm font-medium text-gray-900 truncate p-3">Sent to :{email.to}</p>
+                        <p className="text-sm text-gray-900 truncate p-3">Subject: {email.subject}</p>
                       </div>
                       <div>
-                        <p className="text-sm text-gray-500">{email.date}</p>
+                        <p className="text-sm text-gray-500">{email.createdAt}</p>
                       </div>
                     </div>
                     <div className="mt-2 sm:flex sm:justify-between">
-                      <p className="mt-1 text-sm text-gray-600">{email.preview}</p>
-                      <a href="#" className="mt-2 text-sm font-medium text-blue-600 sm:mt-0 sm:ml-4">View</a>
+                      <p className="mt-1 text-sm text-gray-600 p-3">{email.text}</p>
                     </div>
                   </li>
                 ))}

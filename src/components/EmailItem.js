@@ -1,25 +1,22 @@
 import React from 'react';
 import { FaStar } from 'react-icons/fa';
 
-const EmailItem = ({ email, onSelect, onStar, onDelete }) => {
+const EmailItem = ({ email, onSelect,onDelete }) => {
   const handleSelect = () => {
-    onSelect(email.id);
+    onSelect(email._id);
   };
-
-  const handleStar = () => {
-    onStar(email.id);
-  };
-
+  
   const handleDelete = () => {
-    onDelete(email.id);
+    onDelete(email._id);
   };
+  
 
   return (
     <div className={`px-4 py-3 ${email.read ? '' : 'font-medium bg-gray-100'}`}>
       <div className="flex items-center justify-between">
         <div className="flex items-center">
           <input type="checkbox" checked={email.selected} onChange={handleSelect} className="mr-2" />
-          <FaStar onClick={handleStar} className={`cursor-pointer ${email.starred ? 'text-yellow-400' : 'text-gray-300'}`} />
+          <FaStar className={`cursor-pointer ${email.starred ? 'text-yellow-400' : 'text-gray-300'}`} />
           <span className="ml-2">{email.sender}</span>
         </div>
         <div className="flex items-center">

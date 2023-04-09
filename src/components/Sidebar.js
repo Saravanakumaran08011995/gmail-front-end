@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import { FiInbox, FiSend, FiPlus } from 'react-icons/fi';
+import { FiInbox, FiSend, FiPlus, FiStar } from 'react-icons/fi';
 
 const Sidebar = ()=> {
   return (
@@ -19,6 +19,14 @@ const Sidebar = ()=> {
               <div className="flex items-center py-1 hover:bg-gray-200">
                 <FiInbox className="inline-block mr-2" /> 
                 <span className="inline-block">Inbox</span>
+              </div>
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/starred">
+              <div className="flex items-center py-1 hover:bg-gray-200">
+                <FiStar className="inline-block mr-2" /> 
+                <span className="inline-block">Starred</span>
               </div>
             </NavLink>
           </li>
