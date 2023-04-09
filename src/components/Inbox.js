@@ -9,7 +9,9 @@ const Inbox = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('https://saravana-kumaran-gmail-backend.vercel.app/api/emails');
+        const response = await fetch('https://saravana-kumaran-gmail-backend.vercel.app/api/emails',{
+          method:"GET"
+        });
         const data = await response.json();
         setEmails(data);
       } catch (error) {
