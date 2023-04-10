@@ -25,13 +25,13 @@ const Sent = () => {
               <ul className="-my-5 divide-y divide-gray-200">
                 {emails.map((email) => (
                   <li key={email._id} className="py-4">
-                    <div className="flex items-center space-x-4">
+                    <div className="flex flex-wrap items-center justify-between sm:flex-nowrap space-y-2 sm:space-y-0 sm:space-x-4">
                       <div className="flex-1 min-w-0">
-                      <p className="text-sm font-medium text-gray-900 truncate p-3">Sender: {email.sender}</p>
-                        <p className="text-sm font-medium text-gray-900 truncate p-3">Sent to :{email.to}</p>
+                        <p className="text-sm font-medium text-gray-900 truncate p-3">Sender: {email.sender}</p>
+                        <p className="text-sm font-medium text-gray-900 truncate p-3">Sent to: {email.to}</p>
                         <p className="text-sm text-gray-900 truncate p-3">Subject: {email.subject}</p>
                       </div>
-                      <div>
+                      <div className="mt-2 sm:mt-0">
                         <p className="text-sm text-gray-500">{email.createdAt}</p>
                       </div>
                     </div>

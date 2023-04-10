@@ -38,6 +38,11 @@ const Starred = () => {
               onDelete={(id) => setEmails(emails.filter((e) => e._id !== id))}
             />
           ))}
+        {emails.filter((email) => email.starred).length === 0 && (
+          <div className="text-gray-500 px-4 py-3 text-sm sm:text-base">
+            You have no starred emails.
+          </div>
+        )}
       </div>
     </div>
   );

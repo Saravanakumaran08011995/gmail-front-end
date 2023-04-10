@@ -1,11 +1,25 @@
 import { NavLink } from 'react-router-dom';
-import { FiInbox, FiSend, FiPlus, FiStar } from 'react-icons/fi';
+import { FiInbox, FiSend, FiPlus, FiStar, FiMenu, FiX } from 'react-icons/fi';
+import { useState } from 'react';
+import '../App.css';
 
-const Sidebar = ()=> {
+const Sidebar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleSidebar = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
-    <div className="bg-gray-100 h-screen w-64 pt-5">
+    <div className="bg-gray-100 h-screen md:w-64 pt-5">
       <div className="px-4">
-        <ul className="mt-2 leading-10">
+        <div className="md:hidden flex items-center justify-between">
+          <div className="text-2xl font-bold"></div>
+          <button onClick={toggleSidebar}>
+            {isOpen ? <FiX /> : <FiMenu />}
+          </button>
+        </div>
+        <ul className={`${isOpen ? '' : 'hidden'} md:block mt-2 leading-10`}>
           <li>
             <NavLink to="/compose">
               <div className="flex items-center py-1 hover:bg-gray-200">
@@ -42,6 +56,6 @@ const Sidebar = ()=> {
       </div>
     </div>
   );
-}
+};
 
 export default Sidebar;

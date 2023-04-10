@@ -18,17 +18,17 @@ const ComposeMail = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     try {
       // First, send the email using nodemailer
       await axios.post('https://saravana-kumaran-gmail-backend.vercel.app/api/send-email', formData);
-  
+
       // Then, save the email to the database
       await axios.post('https://saravana-kumaran-gmail-backend.vercel.app/api/save-email', formData);
-  
+
       // Display a success message to the user
       alert('Mail sent successfully and saved to the database');
-  
+
       // Clear the form data
       setFormData({
         sender: '',
@@ -39,35 +39,36 @@ const ComposeMail = () => {
     } catch (error) {
       console.error(error);
       alert('An error occurred while sending the mail');
-    } 
+    }
   };
-    
+
 
   return (
-    <div className="max-w-5xl mx-auto">
+    <div className="max-w-5xl mx-auto p-4 md:p-10">
       <h2 className="text-2xl font-bold mb-4">Compose Mail</h2>
-      <form onSubmit={handleSubmit} className="space-y-4">
-      <div className="flex flex-col">
+      <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="flex flex-col mb-4 md:col-span-1">
           <label htmlFor="sender" className="text-lg font-medium mb-2">Sender:</label>
-          <input type="email" id="sender" name="sender" required value={formData.sender} onChange={handleInputChange} className="px-4 py-2 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:ring-opacity-50" />
+          <input type="email" id="sender" name="sender" required value={formData.sender} onChange={handleInputChange} className="input bg-gray-100" />
         </div>
-        <div className="flex flex-col">
+        <div className="flex flex-col mb-4 md:col-span-1">
           <label htmlFor="to" className="text-lg font-medium mb-2">To:</label>
-          <input type="email" id="to" name="to" required value={formData.to} onChange={handleInputChange} className="px-4 py-2 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:ring-opacity-50" />
+          <input type="email" id="to" name="to" required value={formData.to} onChange={handleInputChange} className="input bg-gray-100" />
         </div>
-        <div className="flex flex-col">
+        <div className="flex flex-col mb-4 md:col-span-2">
           <label htmlFor="subject" className="text-lg font-medium mb-2">Subject:</label>
-          <input type="text" id="subject" name="subject" required value={formData.subject} onChange={handleInputChange} className="px-4 py-2 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:ring-opacity-50" />
+          <input type="text" id="subject" name="subject" required value={formData.subject} onChange={handleInputChange} className="input bg-gray-100" />
         </div>
-        <div className="flex flex-col">
+        <div className="flex flex-col mb-4 md:col-span-2">
           <label htmlFor="text" className="text-lg font-medium mb-2">Message:</label>
-          <textarea id="text" name="text" required value={formData.text} onChange={handleInputChange} className="px-4 py-2 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:ring-opacity-50"></textarea>
+          <textarea id="text" name="text" required value={formData.text} onChange={handleInputChange} className="textarea bg-gray-100"></textarea>
         </div>
-        <button type="submit" className="bg-indigo-500 text-white py-2 px-4 rounded-md hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-200 focus:ring-opacity-50">Send</button>
+        <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full md:w-auto">
+          Send
+        </button>
       </form>
     </div>
   );
 };
 
 export default ComposeMail;
-

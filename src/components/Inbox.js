@@ -30,13 +30,11 @@ const Inbox = () => {
     setSelectAll(false);
   };
 
-
-
   return (
-    <div className="max-w-6xl mx-auto mt-10">
+    <div className="max-w-6xl mx-auto mt-10 px-4 sm:px-6 md:px-8">
       <h1 className="text-2xl font-medium mb-6">Inbox</h1>
-      <div className="flex justify-between items-center mb-4">
-        <div className="flex items-center">
+      <div className="flex flex-col sm:flex-row justify-between items-center mb-4">
+        <div className="flex items-center mb-2 sm:mb-0">
           <input type="checkbox" checked={selectAll} onChange={handleSelectAll} className="mr-2" />
           <span className="font-medium">Select All</span>
         </div>
